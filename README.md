@@ -64,8 +64,10 @@ EMBED_MODEL=nomic-embed-text
 GEN_MODEL= CHOSE YOUR MODEL (EG: OPENAI OSS) ```
 ```
 ### 3️⃣ Frontend Setup
+```
 cd frontend
 npm install
 npm run dev
+```
 
 
