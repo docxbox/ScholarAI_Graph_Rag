@@ -1,92 +1,71 @@
-📚 ScholarAI Graph-RAG
+# 📚 Scholar Graph-RAG
 
-Scholar Graph-RAG is an AI-powered research assistant that combines knowledge graphs, arXiv papers, and large language models into a seamless exploration tool.
-It allows researchers to ask natural-language questions, retrieve relevant papers, visualize connections between concepts, and receive AI-generated insights in a clean chat-style interface.
+> **Scholar Graph-RAG** is an **AI-powered research assistant** that blends  
+> 🧠 **Knowledge Graphs**, 📄 **arXiv papers**, and 🤖 **LLMs** into one seamless tool.  
+> Ask complex research questions, retrieve **grounded answers**, and explore  
+> the **connections between concepts, papers, and entities** in an intuitive interface.  
 
-<img width="1180" height="658" alt="image" src="https://github.com/user-attachments/assets/c271d573-69b5-4557-a8d7-ac9e1213c787" />
+---
+<img width="1180" height="658" alt="image" src="https://github.com/user-attachments/assets/d8e588b4-b586-4781-b7d7-dd65c35501de" />
+
+## ✨ Features
+
+- 🔎 **Graph-RAG Retrieval** – Combines **vector search** + **graph traversal** for rich, contextual answers.  
+- 💬 **Conversational AI** – Ask natural language queries and stream AI responses in real time.  
+- 📊 **Interactive Graph** – Visualize entities, methods, and their relationships.  
+- 📑 **Research Metadata** – Instantly access paper titles, abstracts, and PDF links.  
+- 🕒 **History Sidebar** – Revisit past conversations like in modern AI assistants.  
+- ⚡ **Scalable Backend** – PySpark + Neo4j + FastAPI for efficient processing and retrieval.  
 
 
 
-🚀 Features
+---
 
-Graph-RAG Retrieval: Combines vector search + knowledge graph traversal for deep context.
+## 🛠️ Tech Stack  
 
-Natural Language Querying: Ask complex research questions, get grounded answers.
+**Backend**:  
+- ⚡ FastAPI – API & streaming  
+- 🔗 Neo4j – graph + vector search  
+- 🔥 PySpark – large-scale processing  
+- 📄 PyMuPDF – PDF text extraction  
+- 🧩 LangChain + Ollama/OpenRouter – embeddings + LLM  
 
-Interactive Graph: Explore papers, entities, and relationships visually.
+**Frontend**:  
+- ⚛️ React + Tailwind – modern UI  
+- 📈 D3.js (or Vis.js) – graph visualization  
+- 🔄 SSE – live streaming of LLM answers  
 
-Chat Interface: Conversational AI that streams responses in real time.
+---
 
-Research Metadata: View paper titles, PDF links, and key context alongside the chat.
+## ⚡ Quick Start  
 
-History Sidebar: Navigate past queries like a modern AI assistant.
+### 1️⃣ Clone the Repo
+```bash
+git clone https://github.com/YOUR-USERNAME/ScholarAI-Graph-Rag.git
+cd ScholarAI-Graph-Rag
 
-🏗️ System Architecture
-1. Offline Data Pipeline
-
-arxiv_retriever.py – fetches papers & PDFs from arXiv API.
-
-spark_processor.py – processes PDFs into chunks, embeddings, and graph entities using PySpark + Ollama/OpenRouter.
-
-graph_pipe.py – loads processed data into Neo4j as a searchable knowledge graph.
-
-2. Online API Server
-
-FastAPI backend (main.py, retriever.py) serves queries.
-
-Vector search via Neo4j’s vector index.
-
-Expands retrieved nodes into connected entities/papers.
-
-Streams responses from LLM (Ollama/OpenRouter).
-
-3. Frontend (React)
-
-Left panel → Chat history.
-
-Center panel → Conversation + AI answers + paper metadata.
-
-Right panel → Graph visualization.
-
-🛠️ Tech Stack
-
-Backend: FastAPI, Neo4j, PySpark, PyMuPDF, LangChain, Ollama/OpenRouter
-
-Frontend: React + Tailwind (with modern design)
-
-Database: Neo4j (graph DB + vector index)
-
-Infrastructure: Docker (optional for deployment)
-
-⚡ Quick Start
-1. Clone the Repository
-git clone https://github.com/YOUR-USERNAME/scholar-graph-rag.git
-cd scholar-graph-rag
-
-2. Backend Setup
+```
+### 2️⃣ Backend Setup
+```
 cd backend
 python -m venv venv
-source venv/bin/activate   # or venv\Scripts\activate on Windows
+source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
-
-Set up .env file:
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 NEO4J_URI=bolt://localhost:7687
 NEO4J_USER=neo4j
 NEO4J_PASSWORD=yourpassword
 NEO4J_DATABASE=neo4j
+
 LLM_PROVIDER=openrouter   # or ollama
 EMBED_MODEL=nomic-embed-text
-GEN_MODEL=gpt-oss-20b
-
-
-Run backend:
-
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-
-3. Frontend Setup
+GEN_MODEL= CHOSE YOUR MODEL (EG: OPENAI OSS) ```
+```
+### 3️⃣ Frontend Setup
 cd frontend
 npm install
 npm run dev
+
 
